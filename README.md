@@ -2,13 +2,18 @@
 LLVM IR based SFI, yet another Memory Guard
 
 ## Dependencies
+
 best for llvm-10 and clang-10,
+
 other versions may need to edit the Makefile.
+
 require at least llvm-5.0+, clang-5.0+. 
+
 (not working with llvm-3.x)
 
 ## Usage
 Insert AndOr checks or IfElse checks to llvm IR for SFI.
+
 As shown in the test, add `-load /path/to/libGmem-pass.so -gmem` in the opt pass to do SFI.
 
 ```shell
@@ -42,5 +47,7 @@ Detailed declaration is in Gmem.h
 ```
 
 ## Note
+
 in Auxiliary.c the allocator is not indispensable, replace it as you like.
+
 Or you can directly write to SFI_MASK and SFI_START (this two are for AndOr methods), or Heap Lower/Upper Bound and Stack Lower/Upper Bound (for private heap and stack).
