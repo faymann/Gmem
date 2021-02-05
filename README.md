@@ -28,22 +28,22 @@ clang-10 -o obj/test obj/test-opt.bc -g -O3
 Detailed declaration is in Gmem.h
 
 ```shell
-    -Gmem-rw=   
-        What type of memory accesses to protect when doing sfi:
-            rw          Reads and writes
-            r           Reads only
-            w           Writes only
-    -Gmem-check-method=
-        What type of ptr check to use when doing sfi:
-            andor         And Or Masking
-            ifelseheap    If Else Heap Boundary Check Only on Heap
-            ifelseall     If Else Boundary Check on Stack and Heap
-    -Gmem-verify-external-call-args=true/false
-        Add checks to all pointer-type arguments to external functions 
+-Gmem-rw=   
+	What type of memory accesses to protect when doing sfi:
+        rw          Reads and writes
+        r           Reads only
+        w           Writes only
+-Gmem-check-method=
+    What type of ptr check to use when doing sfi:
+        andor         And Or Masking
+        ifelseheap    If Else Heap Boundary Check Only on Heap
+        ifelseall     If Else Boundary Check on Stack and Heap
+-Gmem-verify-external-call-args=true/false
+    Add checks to all pointer-type arguments to external functions 
 	(make sure uninstrumented libraries cannot use invalid pointers)
-    -Gmem-whitelist-section=stringref
-        Functions in this section are allowed access to the safe region
-        Initialized to "Gmem_functions".
+-Gmem-whitelist-section=stringref
+    Functions in this section are allowed access to the safe region
+    Initialized to "Gmem_functions".
 ```
 
 ## Note
