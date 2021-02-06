@@ -13,7 +13,7 @@ void safe_region_write(volatile char *ptr, char v) {
 }
 
 int main(int argc, char **argv) {
-    volatile char *a = _Gmem_alloc(10, (void *)0x400000000000ULL);
+    volatile char *a = Gmem_alloc(10, (void *)0x400000000000ULL);
     volatile char *b = malloc(10);
 
     fprintf(stderr, "alloc: safe: %p  normal: %p\n", a, b);
