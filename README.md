@@ -5,13 +5,14 @@ LLVM IR based SFI, yet another Memory Guard
 
 best for llvm-10 and clang-10,
 
-other versions may need to edit the Makefile.
+other versions may need to edit the Makefiles.
 
 require at least llvm-5.0+, clang-5.0+. 
 
 (not working with llvm-3.x)
 
 ## Usage
+
 Insert AndOr checks or IfElse checks to llvm IR for SFI.
 
 As shown in the test, add `-load /path/to/libGmem-pass.so -gmem` in the opt pass to do SFI.
@@ -25,7 +26,7 @@ opt-10 -load ../obj/libGmem-pass.so -gmem -Gmem-rw=w -Gmem-check-method=ifelsehe
 clang-10 -o obj/test obj/test-opt.bc -g -O3
 ```
 
-Detailed declaration is in Gmem.h
+Detailed declaration is in [Gmem.h](./Gmem.h)
 
 ```shell
 -Gmem-rw=   
@@ -48,6 +49,10 @@ Detailed declaration is in Gmem.h
 
 ## Note
 
-in Auxiliary.c the allocator is not indispensable, replace it as you like.
+1. 
 
-Or you can directly write to SFI_MASK and SFI_START (this two are for AndOr methods), or Heap Lower/Upper Bound and Stack Lower/Upper Bound (for private heap and stack).
+2. The allocator provided in [Auxiliary.c](./Auxiliary.c) is not indispensable, replace it as you like.
+
+3. You can directly write to SFI_MASK and SFI_START (for AndOr methods), or Heap Lower/Upper Bound and Stack Lower/Upper Bound (for private heap and stack).
+
+4. Without optimization(with `-O0` flag set) the `main()` function would fail on Segmentation Fault. This is becasue main() would first assign `argc` and `**argv` , and then the SFI instructions would check them, which would fail.(these ptrs are not in the range, for SFI paras haven't been set yet before allocating)
