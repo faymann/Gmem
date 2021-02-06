@@ -14,7 +14,7 @@ void *_Gmem_IfElseHeap(void *ptr)
     //    return ptr;
     else
     {
-        fprintf(stderr, "Pointer %p illegal access(Nor in Heap or Stack)\n", ptr);
+        fprintf(stderr, "Pointer %p illegal access(Not in Heap)\n", ptr);
         fprintf(stderr, "Segmentation Fault\n");
         exit(EXIT_FAILURE);
     }
