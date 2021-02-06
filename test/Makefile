@@ -7,6 +7,8 @@ RW         ?= w
 CHECK_METHOD ?= ifelseheap
 CHECK_EXT_CALL_ARGS ?= false
 
+# O0(No Optimization) may diectly check args of main func, which would definitely get Segmentation Fault
+
 CFLAGS  := -Wall -g -O3 -emit-llvm -c -I../
 OPTFLAGS := -load ../obj/libGmem-pass.so -gmem 			\
             -Gmem-rw=$(RW)  							\
