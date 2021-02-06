@@ -9,4 +9,4 @@ static uintptr_t Heap_Lower_Bound, Heap_Upper_Bound, Stack_Lower_Bound, Stack_Up
 static uintptr_t SFI_START, SFI_MASK;
 static void *last_alloc = NULL;
 
-void *_Gmem_alloc(size_t sz, void *start_addr);
+void *Gmem_alloc(size_t sz, void *start_addr);
