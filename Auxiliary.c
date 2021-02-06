@@ -35,13 +35,13 @@ void *_Gmem_IfElseAll(void *ptr)
     }
 }
 
-static size_t _Gmem_pageround(size_t sz)
+static size_t Gmem_pageround(size_t sz)
 {
     int pgz = getpagesize();
     return (sz & ~(pgz - 1)) + pgz;
 }
 
-void *_Gmem_alloc(size_t sz, void *start_addr)
+void *Gmem_alloc(size_t sz, void *start_addr)
 {
     if (!last_alloc)
     {
