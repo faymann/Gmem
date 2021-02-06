@@ -50,7 +50,11 @@ Detailed declaration is in [Gmem.h](./Gmem.h)
 ## Note
 
 1. Any function with its name started with `"_Gmem_"` would be automatically inlined.
+
 2. The allocator provided in [Auxiliary.c](./Auxiliary.c) is not indispensable, replace it as you like.
-3. You can directly write to SFI_MASK and SFI_START (for AndOr methods), or Heap Lower/Upper Bound and Stack Lower/Upper Bound (for private heap and stack).
+
+3. You can directly write to `SFI_MASK` and `SFI_START` (for AndOr methods), or `Heap Lower/Upper Bound` and `Stack Lower/Upper Bound` (for private heap and stack).
+
 4. Without optimization(with `-O0` flag set) the `main()` function would fail on Segmentation Fault. This is becasue main() would first assign `argc` and `**argv` , and then the SFI instructions would check them, which would fail.(these ptrs are not in the range, for SFI paras haven't been set yet before allocating)
+
 5. Ispired by [Memsentry](https://github.com/vusec/memsentry)
